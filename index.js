@@ -15,7 +15,7 @@ function filtreArrayOfFrenchWords(raw) {
 	return result
 }
 
-window.onload = function () {
+function findWord() {
 	const index = Math.floor(Math.random() * liste.length)
 	const mot = liste[index] + 'g'
 	let found = []
@@ -30,13 +30,14 @@ window.onload = function () {
 	}
 
 	// Ajoute a la liste si jamais rencontré
-	if (!found.some((a) => a === index)) {
+	const isNew = !found.some((a) => a === index)
+	if (isNew) {
 		found.push(index)
 		localStorage.found = JSON.stringify(found)
 	}
 
-	// Colori d'une mechante couleur si le mot déjà vu
-	else document.querySelector('h1').style.color = 'lightcoral'
+	// Colori le mot trouvé
+	document.querySelector('h1').style.color = isNew ? 'white' : 'lightcoral'
 
 	//
 	// Affiche le mot
@@ -45,4 +46,9 @@ window.onload = function () {
 	document.querySelector('h1').textContent = mot
 	document.querySelector('title').textContent = 'Arthuro.org - ' + mot
 	document.querySelector('p').textContent = `${found.length} / ${liste.length}`
+}
+
+window.onload = function () {
+	findWord()
+	document.querySelector('button').onclick = findWord
 }
