@@ -3,3 +3,5 @@ Arthuro point org est une dase de donnée regroupaing tout les mots de la langue
 Proof of concept -> shipping product: 1h50
 
 https://arthuro.netlify.app quand le domaine expirera
+
+This is an updated version of the readme
